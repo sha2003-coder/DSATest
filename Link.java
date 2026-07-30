@@ -74,9 +74,10 @@ class LinkedListAdt
 	{
 		int size=0;
 		Node current=head;
-		while(current.next !=null)
+		while(current!=null)
 		{
 			 size=size+1;
+			 current=current.next;
 		}
 		return size;
 	}
@@ -116,11 +117,13 @@ class LinkedListAdt
 	{
 		if(index<1 || index > getSize()+1)
 		{
-			System.our.println("invalid index");
+			System.out.println("invalid index");
+			return;
 		}
 		if(index==1)
 		{
 			deleteFront();
+			return;
 		}
 		Node current=head;
 		for(int c=1;c<index-1;c++)
@@ -128,6 +131,7 @@ class LinkedListAdt
 			current=current.next;
 		}
 		current.next=current.next.next;
+		
 		
 		
 		
@@ -145,15 +149,6 @@ class LinkedListAdt
 		}
 		else
 		{
-			// Node current=head;
-			// Node previous=null;
-			
-			// while(current.next!=null)
-			// {
-				// previous=current;
-				// current=current.next;
-			// }
-			// previous.next=null;
 			Node current=head;
 			while(current.next.next !=null)
 			{
@@ -162,9 +157,20 @@ class LinkedListAdt
 			current.next=null;
 		}
 	}
-	public int Search(int index)
+	public int Search(int data)
 	{
-		return 
+		Node current = head;
+		int position = 1;
+		while(current != null)
+		{
+			if(current.data == data)
+			{
+				return position;
+			}
+			current = current.next;
+			position++;
+		}
+		return -1;
 	}
 	
 }
